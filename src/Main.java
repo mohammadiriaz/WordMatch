@@ -1,15 +1,17 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        WordMatch w = new WordMatch("mississippi");
+        System.out.println(w.scoreGuess("i"));
+        System.out.println(w.scoreGuess("iss"));
+        System.out.println(w.scoreGuess("issipp"));
+        System.out.println(w.scoreGuess("mississippi"));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        WordMatch w = new WordMatch("aaaabb");
+        System.out.println(w.scoreGuess("a"));
+        System.out.println(w.scoreGuess("aa"));
+        System.out.println(w.scoreGuess("aaa"));
+        System.out.println(w.scoreGuess("aabb"));
+        System.out.println(w.scoreGuess("c"));;
         }
     }
-}
