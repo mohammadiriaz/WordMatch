@@ -1,26 +1,22 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+
 
 public class Main {
-    public static void main(String[] args) {
-
-        WordMatch w = new WordMatch("mississippi");
-        System.out.println(w.scoreGuess("i"));
-        System.out.println(w.scoreGuess("iss"));
-        System.out.println(w.scoreGuess("issipp"));
-        System.out.println(w.scoreGuess("mississippi"));
-
-        WordMatch Test1 = new WordMatch("aaaabb");
-        System.out.println(Test1.scoreGuess("a"));
-        System.out.println(Test1.scoreGuess("aa"));
-        System.out.println(Test1.scoreGuess("aaa"));
-        System.out.println(Test1.scoreGuess("aabb"));
-        System.out.println(Test1.scoreGuess("c"));
-
-        WordMatch Test2 = new WordMatch("concatenation");
-        System.out.println(Test2.scoreGuess("ten"));
-        System.out.println(Test2.scoreGuess("nation"));
-        System.out.println(Test2.findBetterGuess("ten", "nation"));
-        System.out.println(Test2.scoreGuess("con"));
-        System.out.println(Test2.scoreGuess("cat"));
-        System.out.println(Test2.findBetterGuess("con", "cat"));
+    public static void main(String[] args) throws IOException
+    {
+        System.out.println(read());
+    }
+    public static int read() throws IOException{
+        int points = 0;
+        File f = new File("Guesses.txt");
+        Scanner s = new Scanner(f);
+        while (s.hasNext()) {
+            WordMatch w = new WordMatch(s.next());
+            points += w.scoreGuess(w.findBetterGuess(s.next(), s.next()));
+        }
+        return points;
     }
 }
